@@ -10,7 +10,7 @@ composer require thibautselingue/local-php-security-checker-installer
 Usage:
 
 ```
-vendor/bin/local-php-security-checker-installer && vendor/bin/php-security-checker
+vendor/bin/local-php-security-checker-installer && vendor/bin/local-php-security-checker
 ```
 
 Example in composer.json auto-scripts:
