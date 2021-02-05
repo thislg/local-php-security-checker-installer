@@ -1,5 +1,5 @@
 {
-    "name": "thibautselingue/composer-php-security-checker",
+    "name": "thibautselingue/local-php-security-checker-installer",
     "description": "Composer integration for local PHP security check",
     "type": "library",
     "license": "MIT",
@@ -10,6 +10,6 @@
         }
     ],
     "bin": [
-        "bin/install-local-php-security-checker"
+        "bin/local-php-security-checker-installer"
     ]
 }
