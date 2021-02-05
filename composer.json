@@ -10,6 +10,6 @@
         }
     ],
     "bin": [
-        "bin/install-local-php-security-checker.php"
+        "bin/install-local-php-security-checker"
     ]
 }
