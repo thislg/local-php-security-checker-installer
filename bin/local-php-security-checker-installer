@@ -20,6 +20,10 @@ if (!isset($bindirOutput[0])) {
 
 $bindir = $bindirOutput[0];
 
+if (!file_exists($bindir)) {
+    mkdir($bindir, 0775, true);
+}
+
 exec("curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v${version}/local-php-security-checker_${version}_linux_amd64 > ./{$bindir}/local-php-security-checker");
 chmod("./{$bindir}/local-php-security-checker", 0755);
 
