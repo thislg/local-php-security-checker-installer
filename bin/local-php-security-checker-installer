@@ -10,15 +10,26 @@ if (!isset($versionOutput[0])) {
 
 $version = $versionOutput[0];
 
-$composerOutput = null;
-exec('composer --version >/dev/null 2>&1 && echo composer', $composerOutput);
+foreach (array(
+    'composer',
+    './composer',
+    'composer.phar',
+    './composer.phar',
+    'bin/composer',
+    'tools/composer',
+    'bin/composer.phar',
+    'tools/composer.phar',
+) as $popularComposerExecutableLocation) {
+    $composerOutput = null;
+    exec("{$popularComposerExecutableLocation} --version >/dev/null 2>&1 && echo ${popularComposerExecutableLocation}", $composerOutput);
+
+    if (isset($composerOutput[0])) {
+        break;
+    }
+}
 
 if (!isset($composerOutput[0])) {
-    exec('composer.phar --version >/dev/null 2>&1 && echo composer.phar', $composerOutput);
-
-    if (!isset($composerOutput[0])) {
-        exit(3);
-    }
+    exit(3);
 }
 
 $composer = $composerOutput[0];
