@@ -10,8 +10,10 @@ if (!isset($versionOutput[0])) {
 
 $version = $versionOutput[0];
 
+$composer = getenv('COMPOSER_BIN') ?: 'composer';
+
 $bindirOutput = null;
-exec('composer config bin-dir', $bindirOutput);
+exec("{$composer} config bin-dir", $bindirOutput);
 
 if (!isset($bindirOutput[0])) {
     exit(2);
