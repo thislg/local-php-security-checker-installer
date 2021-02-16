@@ -20,12 +20,12 @@ Example passing path to Composer binary:
 COMPOSER_BIN=./composer.phar vendor/bin/local-php-security-checker-installer && vendor/bin/local-php-security-checker
 ```
 
-Example in `composer.json` auto-scripts:
+Example in `composer.json` to run it after install:
 
 ```
 "scripts": {
-    "auto-scripts": {
-        "local-php-security-checker-installer && local-php-security-checker": "script"
+    "post-install-cmd": {
+        "local-php-security-checker-installer && local-php-security-checker"
     }
 }
 ```
