@@ -25,7 +25,47 @@ if (!file_exists($bindir)) {
     mkdir($bindir, 0775, true);
 }
 
-exec("curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v${version}/local-php-security-checker_${version}_linux_amd64 > ./{$bindir}/local-php-security-checker");
+$platform = null;
+exec("uname", $platform_output);
+
+switch($platform_output[0]){
+    case 'Darwin':
+        $platform = 'darwin';
+        break;
+    case 'Linux':
+        $platform = 'linux';
+        break;  
+    case 'WindowsNT':
+        $platform = 'windows';
+        break;
+    default:
+        $platform = 'linux';
+}
+
+$architecture_ouput = null;
+exec("uname -m", $architecture_ouput);
+
+switch($architecture_ouput[0]){
+    case 'arm':
+        $architecture = 'arm64';
+        break;
+    case 'aarch64':
+        $architecture = 'arm64';
+        break;
+    case 'i386':
+        $architecture = '386';
+        break;
+    case 'i686':
+        $architecture = '386';
+        break;
+    case 'x86_64':
+        $architecture = 'amd64';
+        break;
+    default:
+        $architecture = 'amd64';
+}
+
+exec("curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v${version}/local-php-security-checker_${version}_${platform}_${architecture} > ./{$bindir}/local-php-security-checker");
 chmod("./{$bindir}/local-php-security-checker", 0755);
 
 ?>
