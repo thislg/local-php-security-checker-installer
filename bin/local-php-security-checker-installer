@@ -25,44 +25,48 @@ if (!file_exists($bindir)) {
     mkdir($bindir, 0775, true);
 }
 
-$platform = null;
-exec("uname", $platform_output);
+$platform = 'linux';
+$platform_output = null;
+exec('uname', $platform_output);
 
-switch($platform_output[0]){
-    case 'Darwin':
-        $platform = 'darwin';
-        break;
-    case 'Linux':
-        $platform = 'linux';
-        break;  
-    case 'WindowsNT':
-        $platform = 'windows';
-        break;
-    default:
-        $platform = 'linux';
+if (isset($platform_output[0])) {
+    switch ($platform_output[0]) {
+        case 'Darwin':
+            $platform = 'darwin';
+            break;
+        case 'Linux':
+            $platform = 'linux';
+            break;
+        case 'WindowsNT':
+            $platform = 'windows';
+            break;
+        default:
+    }
 }
 
-$architecture_ouput = null;
-exec("uname -m", $architecture_ouput);
+$architecture = 'amd64';
+$architecture_output = null;
+exec('uname -m', $architecture_output);
 
-switch($architecture_ouput[0]){
-    case 'arm':
-        $architecture = 'arm64';
-        break;
-    case 'aarch64':
-        $architecture = 'arm64';
-        break;
-    case 'i386':
-        $architecture = '386';
-        break;
-    case 'i686':
-        $architecture = '386';
-        break;
-    case 'x86_64':
-        $architecture = 'amd64';
-        break;
-    default:
-        $architecture = 'amd64';
+if (isset($architecture_output[0])) {
+    switch ($architecture_output[0]) {
+        case 'arm':
+            $architecture = 'arm64';
+            break;
+        case 'aarch64':
+            $architecture = 'arm64';
+            break;
+        case 'i386':
+            $architecture = '386';
+            break;
+        case 'i686':
+            $architecture = '386';
+            break;
+        case 'x86_64':
+            $architecture = 'amd64';
+            break;
+        default:
+    }
 }
 
 exec("curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v${version}/local-php-security-checker_${version}_${platform}_${architecture} > ./{$bindir}/local-php-security-checker");
