@@ -24,8 +24,8 @@ Example in `composer.json` to run it after install:
 
 ```
 "scripts": {
-    "post-install-cmd": {
+    "post-install-cmd": [
         "local-php-security-checker-installer && local-php-security-checker"
-    }
+    ]
 }
 ```
