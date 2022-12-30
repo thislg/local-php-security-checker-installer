@@ -69,7 +69,7 @@ if (isset($architecture_output[0])) {
     }
 }
 
-exec("curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v${version}/local-php-security-checker_${version}_${platform}_${architecture} > ./{$bindir}/local-php-security-checker");
+exec("curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v{$version}/local-php-security-checker_{$version}_{$platform}_{$architecture} > ./{$bindir}/local-php-security-checker");
 chmod("./{$bindir}/local-php-security-checker", 0755);
 
 ?>
