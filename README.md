@@ -1,6 +1,8 @@
 # local-php-security-checker-installer
 Composer integration for local PHP security check using fabpot/local-php-security-checker
 
+This project is archived as it was rendered obsolete by the `composer audit` command.
+
 ## Install:
 
 ```
