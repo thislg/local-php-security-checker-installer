@@ -1,4 +1,5 @@
 {
+    "abandoned": true,
     "name": "thibautselingue/local-php-security-checker-installer",
     "description": "Composer integration for local PHP security check",
     "type": "library",
